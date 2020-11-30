@@ -1,0 +1,147 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>SERVICES APP</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+    <!-- CSS here -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/mobiscroll.jquery.min.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/media.css">
+    <!-- <link rel="stylesheet" href="css/responsive.css"> -->
+</head>
+<body>
+ 
+<div class="infor">
+  <div class="container">
+    <div class="header">
+    <div class="row">
+    <div class="col-sm-12">
+      <h1> <i class="fa fa-th-large"> </i><span>نوع الخدمة</span></h1>
+      <a   class="card-link" href="#"><img src="{{ asset('front/img/n.png')}}"></a>
+       <a href="{{ redirect()->back()->getTargetUrl() }}"><i class="fa fa-arrow-left"></i></a>
+    </div>
+    
+    </div>
+  </div>
+
+
+
+</div>
+
+<form class="contact100-form validate-form" action="{{ route('reqs.store') }}" method="POST">
+<div class="kind">
+<div class="ord">
+      <div class="container">
+      <h2>اختر نوع الحجز</h2>
+      <div class="act">
+      <div class="row">
+
+        <div class="col"><a class="btn btn-primary" href="#" role="button">الطلبات الحالية</a></div>
+        <div class="col"><a class="btn btn-primary" href="#" role="button">الطلبات السابقة</a></div>
+      </div>
+      </div>
+
+      <div class="chack">
+        
+        <h2>اختر نوع الخدمة</h2>
+       
+        <input type="hidden"  value="0" id="state" name="state">
+        <input type="hidden"  value="" id="latitude" name="latitude">
+        <input type="hidden" value="" id="longitude"  name="longitude">
+        @foreach($Servs as $Serv)
+        <div class="spec">
+          
+          <label class="customcheck">
+        <h3>{{ $Serv->name }}</h3>
+        <p>{{ $Serv->salary }}ريال</p>
+          <input name="Servs[]" type="checkbox">
+          <span class="checkmark"></span>
+        </label>
+        </div>
+        @endforeach
+        
+      </div>
+  
+</div>
+</div>
+<div class="inp">
+    
+       
+
+      <div class="container">
+      <h2>بيانات الحجز</h2> 
+        <div class="form-group">
+          <label for="exampleInputname">كتابة الاسم</label>
+           <input type="text" class="form-control" id="exampleInputphone" name="name" placeholder="الرجاء ادخال الاسم">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputphone">كتابة رقم الجوال</label>
+          <input type="phone" class="form-control" id="exampleInputphone" name="phone" placeholder="الرجاء ادخال رقم الجوال">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputphone">اختر المدينة</label>
+          <input type="text" id="pac-input" class="form-control" placeholder="  " name="address">
+          <btn onclick="$('#profileCard').slideToggle(1000)" class=" btn-outline-default btn-round field-icon"><i class="fa fa-map-marker"></i></btn>
+        </div>
+
+          <div class="card text-left" id="profileCard" style="display: none">
+          <div class="validate-input" id="map" style="min-height: 300px;min-width: 250px;"></div>
+          </div>
+          </div>
+      </div>
+      <div class="des">
+        <div class="container">
+        <h2>تحديد الوقت</h2> 
+          <div class="row">
+            <div class="col">
+                <div class="form-group">
+                  <label for="exampleInputphone">من</label>
+                   <input type="time" name="time_from" class="form-control" id="exampleInputphone" placeholder="من">
+               </div>
+            </div>
+
+            <div class="col">
+                <div class="form-group">
+                  <label for="exampleInputphone">الي</label>
+                  <input type="time" name="time_to" class="form-control" id="exampleInputphone" placeholder="الي">
+               </div>
+            </div>
+              
+
+          </div>
+                    
+                <div class="form-group">
+                  <label for="exampleInputphone">تحديد التاريخ</label>
+                  <input type="date" name="date" class="form-control" id="exampleInputphone" placeholder="التاريخ">
+               </div>
+                    
+    
+
+          <div class="form-group">
+          <label for="exampleFormControlTextarea1">ملاحظات</label>
+          <textarea class="form-control" name="des" id="exampleFormControlTextarea1" placeholder="اكتب ملاحظاتك هنا"></textarea>
+          </div>
+          
+     <button type="submit" class="btn">حجز الان</button>
+        </div>
+      </div>
+      
+    
+</div>
+</form>
+</div>
+
+
+<script src="js/jquery-3.5.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>  
+<script src="js/mobiscroll.jquery.min.js"></script>  
+<script src="js/popper.min.js"></script>
+<script src="js/custom.js"></script>   
+</body>
+</html>

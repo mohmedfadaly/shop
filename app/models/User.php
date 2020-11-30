@@ -1,0 +1,60 @@
+<?php
+
+namespace App\models;
+
+use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+
+class User extends Authenticatable
+{
+    use Notifiable;
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'name', 'email', 'password','address','latitude', 
+        'longitude','phone','image','fcm_token','api_token'
+    ];
+
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    protected $hidden = [
+        'password', 'remember_token',
+    ];
+
+    /**
+     * The attributes that should be cast to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+    ];
+
+    public function Req() {
+        return $this->hasMany('App\models\Req');
+    }
+    public function Reat() {
+        return $this->hasMany('App\models\Reat');
+    }
+
+    public function ums() {
+        return $this->hasMany('App\models\Ums');
+    }
+    public function favrs() {
+        return $this->hasMany('App\models\Fav');
+    }
+
+    public function nots() {
+        return $this->hasMany('App\models\Not');
+    }
+    
+}
+
